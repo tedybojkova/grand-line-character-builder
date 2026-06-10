@@ -85,13 +85,18 @@ if page == "My Crew":
             col2.metric(label="Armour Class", value=char["computed"]["armour_class"])
             col3.metric(label="Proficiency", value=f"+{char['computed']['proficiency_bonus']}")
             col4.metric(label="Level", value=char["level"])
-            col5.metric(label="🏴 Bounty", value=format_bounty(char["bounty"]))
+            col5.metric(
+                label="🏴 Bounty",
+                value=format_bounty(char["bounty_with_level"]),
+                delta=f"+{format_bounty(char['bounty_with_level'] - char['bounty'])}" if char['level'] > 1 and char[
+                    'bounty'] > 0 else None,
+            )
 
-            st.markdown("---")
-
+            stat_order = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"]
             stats = char["stats"]
             cols = st.columns(6)
-            for i, (stat_name, values) in enumerate(stats.items()):
+            for i, stat_name in enumerate(stat_order):
+                values = stats[stat_name]
                 cols[i].metric(
                     stat_name.capitalize(),
                     values["base"],
@@ -186,6 +191,9 @@ elif page == "Create Character":
         step=1_000_000,
         help="How much is your pirate worth? Most start at 0.",
     )
+    if bounty > 0:
+        scaled = int(bounty * (1 + (level - 1) * 0.10))
+        st.caption(f"At level {level} this bounty will be: {scaled:,} Berry")
 
     st.markdown("### Backstory (optional)")
     backstory = st.text_area(

@@ -145,6 +145,20 @@ class Character(db.Model):
         """
         return (self.level - 1) // 4 + 2
 
+    @property
+    def bounty_with_level(self) -> int:
+        """Calculate total bounty including a level bonus.
+
+        Each level above 1 adds 10% of the base bounty on top.
+        A level 10 character with 1,000,000 Berry base bounty
+        would have 1,900,000 Berry total.
+
+        Returns:
+            int: The total bounty including level scaling.
+        """
+        level_multiplier = 1 + (self.level - 1) * 0.10
+        return int(self.bounty * level_multiplier)
+
     def to_dict(self) -> dict:
         """Serialize the character to a dictionary for API responses.
 
@@ -158,6 +172,7 @@ class Character(db.Model):
             "level": self.level,
             "backstory": self.backstory,
             "bounty": self.bounty,
+            "bounty_with_level": self.bounty_with_level,
             "character_class": self.character_class.name,
             "race": self.race.name,
             "stats": {
