@@ -56,8 +56,7 @@ class CharacterService:
         if race is None:
             raise RaceNotFoundException(race_name)
 
-        stat_names = ["strength", "dexterity", "constitution",
-                      "intelligence", "wisdom", "charisma"]
+        stat_names = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"]
         stats = {}
         for stat in stat_names:
             value = int(data.get(stat, 10))
@@ -92,8 +91,7 @@ class CharacterService:
         if "backstory" in data:
             character.backstory = data["backstory"]
 
-        for stat in ["strength", "dexterity", "constitution",
-                     "intelligence", "wisdom", "charisma"]:
+        for stat in ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"]:
             if stat in data:
                 value = int(data[stat])
                 self._validate_stat(stat, value)

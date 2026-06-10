@@ -28,7 +28,7 @@ class Race(db.Model):
                 "intelligence": self.intelligence_bonus,
                 "wisdom": self.wisdom_bonus,
                 "charisma": self.charisma_bonus,
-            }
+            },
         }
 
     def __repr__(self) -> str:

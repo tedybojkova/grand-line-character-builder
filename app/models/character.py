@@ -24,11 +24,13 @@ class Character(db.Model):
     @property
     def character_class(self):
         from .character_class import CharacterClass
+
         return CharacterClass.query.get(self.class_id)
 
     @property
     def race(self):
         from .race import Race
+
         return Race.query.get(self.race_id)
 
     @property
@@ -83,18 +85,18 @@ class Character(db.Model):
             "character_class": self.character_class.name,
             "race": self.race.name,
             "stats": {
-                "strength":     {"base": self.strength,     "modifier": self.strength_modifier},
-                "dexterity":    {"base": self.dexterity,    "modifier": self.dexterity_modifier},
+                "strength": {"base": self.strength, "modifier": self.strength_modifier},
+                "dexterity": {"base": self.dexterity, "modifier": self.dexterity_modifier},
                 "constitution": {"base": self.constitution, "modifier": self.constitution_modifier},
                 "intelligence": {"base": self.intelligence, "modifier": self.intelligence_modifier},
-                "wisdom":       {"base": self.wisdom,       "modifier": self.wisdom_modifier},
-                "charisma":     {"base": self.charisma,     "modifier": self.charisma_modifier},
+                "wisdom": {"base": self.wisdom, "modifier": self.wisdom_modifier},
+                "charisma": {"base": self.charisma, "modifier": self.charisma_modifier},
             },
             "computed": {
                 "max_hit_points": self.max_hit_points,
                 "armour_class": self.armour_class,
                 "proficiency_bonus": self.proficiency_bonus,
-            }
+            },
         }
 
     def __repr__(self) -> str:

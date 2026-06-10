@@ -24,22 +24,16 @@ class InvalidStatValueError(RPGBaseException):
     def __init__(self, stat_name: str, value: int) -> None:
         self.stat_name = stat_name
         self.value = value
-        super().__init__(
-            f"Invalid value {value} for '{stat_name}'. Must be between 1 and 20."
-        )
+        super().__init__(f"Invalid value {value} for '{stat_name}'. Must be between 1 and 20.")
 
 
 class InvalidCharacterNameError(RPGBaseException):
     def __init__(self, name: str) -> None:
         self.name = name
-        super().__init__(
-            f"Invalid name '{name}'. Must be 1 to 50 characters."
-        )
+        super().__init__(f"Invalid name '{name}'. Must be 1 to 50 characters.")
 
 
 class InvalidLevelError(RPGBaseException):
     def __init__(self, level: int) -> None:
         self.level = level
-        super().__init__(
-            f"Invalid level {level}. Must be between 1 and 20."
-        )
+        super().__init__(f"Invalid level {level}. Must be between 1 and 20.")

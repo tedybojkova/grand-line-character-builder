@@ -2,6 +2,8 @@ import streamlit as st
 import requests
 
 API_URL = "http://localhost:5000"
+
+
 def api_get(path):
     try:
         response = requests.get(f"{API_URL}{path}", timeout=5)
@@ -40,6 +42,8 @@ def api_delete(path):
 
 def modifier_str(mod):
     return f"+{mod}" if mod >= 0 else str(mod)
+
+
 st.set_page_config(
     page_title="RPG Character Builder",
     page_icon="⚔️",
@@ -94,90 +98,88 @@ if page == "My Characters":
                         st.success(f"{char['name']} deleted.")
                         st.rerun()
 elif page == "Create Character":
-                        st.title("Create Your Character")
+    st.title("Create Your Character")
 
-                        classes_data = api_get("/classes/")
-                        races_data = api_get("/races/")
+    classes_data = api_get("/classes/")
+    races_data = api_get("/races/")
 
-                        if classes_data is None or races_data is None:
-                            st.stop()
+    if classes_data is None or races_data is None:
+        st.stop()
 
-                        class_names = [c["name"] for c in classes_data]
-                        race_names = [r["name"] for r in races_data]
-                        class_map = {c["name"]: c for c in classes_data}
-                        race_map = {r["name"]: r for r in races_data}
+    class_names = [c["name"] for c in classes_data]
+    race_names = [r["name"] for r in races_data]
+    class_map = {c["name"]: c for c in classes_data}
+    race_map = {r["name"]: r for r in races_data}
 
-                        st.markdown("### Basic Info")
-                        col1, col2, col3 = st.columns(3)
-                        with col1:
-                            name = st.text_input("Character Name")
-                        with col2:
-                            chosen_class = st.selectbox("Class", class_names)
-                        with col3:
-                            chosen_race = st.selectbox("Race", race_names)
+    st.markdown("### Basic Info")
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        name = st.text_input("Character Name")
+    with col2:
+        chosen_class = st.selectbox("Class", class_names)
+    with col3:
+        chosen_race = st.selectbox("Race", race_names)
 
-                        level = st.slider("Level", min_value=1, max_value=20, value=1)
+    level = st.slider("Level", min_value=1, max_value=20, value=1)
 
-                        col_a, col_b = st.columns(2)
-                        with col_a:
-                            cls = class_map[chosen_class]
-                            st.info(f"**{cls['name']}** — {cls['description']}")
-                        with col_b:
-                            race = race_map[chosen_race]
-                            bonuses = [
-                                f"{k.capitalize()} +{v}"
-                                for k, v in race["bonuses"].items()
-                                if v > 0
-                            ]
-                            st.info(f"**{race['name']}** — {race['description']}\n\n{', '.join(bonuses)}")
+    col_a, col_b = st.columns(2)
+    with col_a:
+        cls = class_map[chosen_class]
+        st.info(f"**{cls['name']}** — {cls['description']}")
+    with col_b:
+        race = race_map[chosen_race]
+        bonuses = [f"{k.capitalize()} +{v}" for k, v in race["bonuses"].items() if v > 0]
+        st.info(f"**{race['name']}** — {race['description']}\n\n{', '.join(bonuses)}")
 
-                        st.markdown("### Stats")
+    st.markdown("### Stats")
 
-                        if st.button("Roll Random Stats"):
-                            rolled = api_get("/characters/roll")
-                            if rolled:
-                                for stat, value in rolled.items():
-                                    st.session_state[f"stat_{stat}"] = value
+    if st.button("Roll Random Stats"):
+        rolled = api_get("/characters/roll")
+        if rolled:
+            for stat, value in rolled.items():
+                st.session_state[f"stat_{stat}"] = value
 
-                        stat_names = ["strength", "dexterity", "constitution",
-                                      "intelligence", "wisdom", "charisma"]
-                        stat_values = {}
-                        cols = st.columns(6)
-                        for i, stat in enumerate(stat_names):
-                            with cols[i]:
-                                default = st.session_state.get(f"stat_{stat}", 10)
-                                stat_values[stat] = st.number_input(
-                                    stat.capitalize(),
-                                    min_value=1,
-                                    max_value=20,
-                                    value=default,
-                                    key=f"input_{stat}",
-                                )
+    stat_names = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"]
+    stat_values = {}
+    cols = st.columns(6)
+    for i, stat in enumerate(stat_names):
+        with cols[i]:
+            default = st.session_state.get(f"stat_{stat}", 10)
+            stat_values[stat] = st.number_input(
+                stat.capitalize(),
+                min_value=1,
+                max_value=20,
+                value=default,
+                key=f"input_{stat}",
+            )
 
-                        st.markdown("### Backstory (optional)")
-                        backstory = st.text_area("Your character's history", height=100)
+    st.markdown("### Backstory (optional)")
+    backstory = st.text_area("Your character's history", height=100)
 
-                        st.markdown("---")
+    st.markdown("---")
 
-                        if st.button("Create Character"):
-                            if not name.strip():
-                                st.error("Your character needs a name!")
-                            else:
-                                result = api_post("/characters/", {
-                                    "name": name.strip(),
-                                    "class_name": chosen_class,
-                                    "race_name": chosen_race,
-                                    "level": level,
-                                    "backstory": backstory,
-                                    **stat_values,
-                                })
-                                if result:
-                                    st.success(
-                                        f"{result['name']} created! "
-                                        f"HP: {result['computed']['max_hit_points']} | "
-                                        f"AC: {result['computed']['armour_class']}"
-                                    )
-                                    st.balloons()
+    if st.button("Create Character"):
+        if not name.strip():
+            st.error("Your character needs a name!")
+        else:
+            result = api_post(
+                "/characters/",
+                {
+                    "name": name.strip(),
+                    "class_name": chosen_class,
+                    "race_name": chosen_race,
+                    "level": level,
+                    "backstory": backstory,
+                    **stat_values,
+                },
+            )
+            if result:
+                st.success(
+                    f"{result['name']} created! "
+                    f"HP: {result['computed']['max_hit_points']} | "
+                    f"AC: {result['computed']['armour_class']}"
+                )
+                st.balloons()
 elif page == "Classes & Races":
     st.title("Classes & Races")
 
@@ -198,9 +200,7 @@ elif page == "Classes & Races":
                 with st.expander(race["name"]):
                     st.write(race["description"])
                     bonuses = [
-                        f"{k.capitalize()} +{v}"
-                        for k, v in race["bonuses"].items()
-                        if v > 0
+                        f"{k.capitalize()} +{v}" for k, v in race["bonuses"].items() if v > 0
                     ]
                     if bonuses:
                         st.success("Bonuses: " + " | ".join(bonuses))

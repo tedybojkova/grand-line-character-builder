@@ -77,12 +77,19 @@ class TestArmourClass:
 
 class TestProficiencyBonus:
 
-    @pytest.mark.parametrize("level,expected", [
-        (1, 2), (4, 2),
-        (5, 3), (8, 3),
-        (9, 4), (12, 4),
-        (17, 6), (20, 6),
-    ])
+    @pytest.mark.parametrize(
+        "level,expected",
+        [
+            (1, 2),
+            (4, 2),
+            (5, 3),
+            (8, 3),
+            (9, 4),
+            (12, 4),
+            (17, 6),
+            (20, 6),
+        ],
+    )
     def test_proficiency_bonus(self, sample_character, level, expected):
         sample_character.level = level
         assert sample_character.proficiency_bonus == expected

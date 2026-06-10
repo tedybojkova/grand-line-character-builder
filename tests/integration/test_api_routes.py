@@ -106,10 +106,7 @@ class TestGetUpdateDelete:
 
     def test_update_character_name(self, client):
         char_id = self._create(client)
-        response = client.put(
-            f"/characters/{char_id}",
-            json={"name": "Thorin Oakenshield"}
-        )
+        response = client.put(f"/characters/{char_id}", json={"name": "Thorin Oakenshield"})
         assert response.status_code == 200
         assert response.get_json()["name"] == "Thorin Oakenshield"
 
@@ -126,8 +123,7 @@ class TestRollStats:
     def test_roll_returns_six_stats(self, client):
         response = client.get("/characters/roll")
         data = response.get_json()
-        expected = {"strength", "dexterity", "constitution",
-                    "intelligence", "wisdom", "charisma"}
+        expected = {"strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"}
         assert set(data.keys()) == expected
 
     def test_rolled_stats_in_valid_range(self, client):

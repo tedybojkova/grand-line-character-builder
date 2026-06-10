@@ -22,8 +22,7 @@ def list_characters():
 @characters_bp.route("/roll", methods=["GET"])
 def roll_stats():
     rolls = _dice_roller.roll_stat_array()
-    stat_names = ["strength", "dexterity", "constitution",
-                  "intelligence", "wisdom", "charisma"]
+    stat_names = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"]
     result = dict(zip(stat_names, rolls))
     logger.info("Rolled stats: %s", result)
     return jsonify(result)
