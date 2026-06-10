@@ -10446,3 +10446,83 @@
 2026-06-10 19:06:08 | INFO     | app | Starting RPG Character Builder...
 2026-06-10 19:06:08 | WARNING  | werkzeug |  * Debugger is active!
 2026-06-10 19:06:08 | INFO     | werkzeug |  * Debugger PIN: 504-257-608
+2026-06-10 19:08:51 | INFO     | app | Starting RPG Character Builder...
+2026-06-10 19:08:51 | INFO     | werkzeug | [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-06-10 19:08:51 | INFO     | werkzeug | [33mPress CTRL+C to quit[0m
+2026-06-10 19:08:51 | INFO     | werkzeug |  * Restarting with watchdog (windowsapi)
+2026-06-10 19:08:51 | INFO     | app | Starting RPG Character Builder...
+2026-06-10 19:08:51 | WARNING  | werkzeug |  * Debugger is active!
+2026-06-10 19:08:51 | INFO     | werkzeug |  * Debugger PIN: 504-257-608
+2026-06-10 19:09:09 | INFO     | werkzeug |  * Detected change in 'C:\\Users\\bojko\\Desktop\\rpg_character_builder\\venv\\Scripts\\python.exe\\Lib\\site-packages\\streamlit\\env_util.py', reloading
+2026-06-10 19:09:09 | INFO     | werkzeug |  * Restarting with watchdog (windowsapi)
+2026-06-10 19:09:10 | INFO     | app | Starting RPG Character Builder...
+2026-06-10 19:09:10 | WARNING  | werkzeug |  * Debugger is active!
+2026-06-10 19:09:10 | INFO     | werkzeug |  * Debugger PIN: 504-257-608
+2026-06-10 19:09:11 | INFO     | app.services.character_service | Retrieved 0 characters.
+2026-06-10 19:09:11 | INFO     | werkzeug | 127.0.0.1 - - [10/Jun/2026 19:09:11] "GET /characters/ HTTP/1.1" 200 -
+2026-06-10 19:09:18 | INFO     | app.routes.classes | Retrieved 12 classes.
+2026-06-10 19:09:18 | INFO     | werkzeug | 127.0.0.1 - - [10/Jun/2026 19:09:18] "GET /classes/ HTTP/1.1" 200 -
+2026-06-10 19:09:20 | INFO     | app.routes.races | Retrieved 10 races.
+2026-06-10 19:09:20 | INFO     | werkzeug | 127.0.0.1 - - [10/Jun/2026 19:09:20] "GET /races/ HTTP/1.1" 200 -
+2026-06-10 19:09:45 | INFO     | app.routes.classes | Retrieved 12 classes.
+2026-06-10 19:09:45 | INFO     | werkzeug | 127.0.0.1 - - [10/Jun/2026 19:09:45] "GET /classes/ HTTP/1.1" 200 -
+2026-06-10 19:09:47 | INFO     | app.routes.races | Retrieved 10 races.
+2026-06-10 19:09:47 | INFO     | werkzeug | 127.0.0.1 - - [10/Jun/2026 19:09:47] "GET /races/ HTTP/1.1" 200 -
+2026-06-10 19:09:49 | INFO     | app.routes.classes | Retrieved 12 classes.
+2026-06-10 19:09:49 | INFO     | werkzeug | 127.0.0.1 - - [10/Jun/2026 19:09:49] "GET /classes/ HTTP/1.1" 200 -
+2026-06-10 19:09:51 | INFO     | app.routes.races | Retrieved 10 races.
+2026-06-10 19:09:51 | INFO     | werkzeug | 127.0.0.1 - - [10/Jun/2026 19:09:51] "GET /races/ HTTP/1.1" 200 -
+2026-06-10 19:09:55 | INFO     | app.routes.classes | Retrieved 12 classes.
+2026-06-10 19:09:55 | INFO     | werkzeug | 127.0.0.1 - - [10/Jun/2026 19:09:55] "GET /classes/ HTTP/1.1" 200 -
+2026-06-10 19:09:57 | INFO     | app.routes.races | Retrieved 10 races.
+2026-06-10 19:09:57 | INFO     | werkzeug | 127.0.0.1 - - [10/Jun/2026 19:09:57] "GET /races/ HTTP/1.1" 200 -
+2026-06-10 19:10:01 | INFO     | app.routes.classes | Retrieved 12 classes.
+2026-06-10 19:10:01 | INFO     | werkzeug | 127.0.0.1 - - [10/Jun/2026 19:10:01] "GET /classes/ HTTP/1.1" 200 -
+2026-06-10 19:10:03 | INFO     | app.routes.races | Retrieved 10 races.
+2026-06-10 19:10:03 | INFO     | werkzeug | 127.0.0.1 - - [10/Jun/2026 19:10:03] "GET /races/ HTTP/1.1" 200 -
+2026-06-10 19:10:05 | DEBUG    | app.services.dice_roller | Rolled 4d6 drop lowest: rolls=[2, 2, 3, 4], total=9
+2026-06-10 19:10:05 | DEBUG    | app.services.dice_roller | Rolled 4d6 drop lowest: rolls=[3, 4, 5, 5], total=14
+2026-06-10 19:10:05 | DEBUG    | app.services.dice_roller | Rolled 4d6 drop lowest: rolls=[3, 4, 5, 6], total=15
+2026-06-10 19:10:05 | DEBUG    | app.services.dice_roller | Rolled 4d6 drop lowest: rolls=[2, 2, 2, 4], total=8
+2026-06-10 19:10:05 | DEBUG    | app.services.dice_roller | Rolled 4d6 drop lowest: rolls=[2, 2, 3, 4], total=9
+2026-06-10 19:10:05 | DEBUG    | app.services.dice_roller | Rolled 4d6 drop lowest: rolls=[3, 4, 6, 6], total=16
+2026-06-10 19:10:05 | INFO     | app.services.dice_roller | Rolled stat array: [9, 14, 15, 8, 9, 16]
+2026-06-10 19:10:05 | INFO     | app.routes.characters | Rolled stats: {'strength': 9, 'dexterity': 14, 'constitution': 15, 'intelligence': 8, 'wisdom': 9, 'charisma': 16}
+2026-06-10 19:10:05 | INFO     | werkzeug | 127.0.0.1 - - [10/Jun/2026 19:10:05] "GET /characters/roll HTTP/1.1" 200 -
+2026-06-10 19:10:15 | INFO     | app.routes.classes | Retrieved 12 classes.
+2026-06-10 19:10:15 | INFO     | werkzeug | 127.0.0.1 - - [10/Jun/2026 19:10:15] "GET /classes/ HTTP/1.1" 200 -
+2026-06-10 19:10:17 | INFO     | app.routes.races | Retrieved 10 races.
+2026-06-10 19:10:17 | INFO     | werkzeug | 127.0.0.1 - - [10/Jun/2026 19:10:17] "GET /races/ HTTP/1.1" 200 -
+2026-06-10 19:10:19 | DEBUG    | app.services.dice_roller | Rolled 4d6 drop lowest: rolls=[1, 1, 1, 5], total=7
+2026-06-10 19:10:19 | DEBUG    | app.services.dice_roller | Rolled 4d6 drop lowest: rolls=[1, 4, 5, 5], total=14
+2026-06-10 19:10:19 | DEBUG    | app.services.dice_roller | Rolled 4d6 drop lowest: rolls=[1, 2, 4, 5], total=11
+2026-06-10 19:10:19 | DEBUG    | app.services.dice_roller | Rolled 4d6 drop lowest: rolls=[2, 2, 5, 6], total=13
+2026-06-10 19:10:19 | DEBUG    | app.services.dice_roller | Rolled 4d6 drop lowest: rolls=[1, 2, 3, 5], total=10
+2026-06-10 19:10:19 | DEBUG    | app.services.dice_roller | Rolled 4d6 drop lowest: rolls=[2, 3, 5, 6], total=14
+2026-06-10 19:10:19 | INFO     | app.services.dice_roller | Rolled stat array: [7, 14, 11, 13, 10, 14]
+2026-06-10 19:10:19 | INFO     | app.routes.characters | Rolled stats: {'strength': 7, 'dexterity': 14, 'constitution': 11, 'intelligence': 13, 'wisdom': 10, 'charisma': 14}
+2026-06-10 19:10:19 | INFO     | werkzeug | 127.0.0.1 - - [10/Jun/2026 19:10:19] "GET /characters/roll HTTP/1.1" 200 -
+2026-06-10 19:10:24 | INFO     | app.routes.classes | Retrieved 12 classes.
+2026-06-10 19:10:24 | INFO     | werkzeug | 127.0.0.1 - - [10/Jun/2026 19:10:24] "GET /classes/ HTTP/1.1" 200 -
+2026-06-10 19:10:26 | INFO     | app.routes.races | Retrieved 10 races.
+2026-06-10 19:10:26 | INFO     | werkzeug | 127.0.0.1 - - [10/Jun/2026 19:10:26] "GET /races/ HTTP/1.1" 200 -
+2026-06-10 19:10:37 | INFO     | app.routes.classes | Retrieved 12 classes.
+2026-06-10 19:10:37 | INFO     | werkzeug | 127.0.0.1 - - [10/Jun/2026 19:10:37] "GET /classes/ HTTP/1.1" 200 -
+2026-06-10 19:10:39 | INFO     | app.routes.races | Retrieved 10 races.
+2026-06-10 19:10:39 | INFO     | werkzeug | 127.0.0.1 - - [10/Jun/2026 19:10:39] "GET /races/ HTTP/1.1" 200 -
+2026-06-10 19:10:41 | INFO     | app.services.character_service | Creating character: {'name': 'Elzear', 'class_name': 'Swordsman', 'race_name': 'Tontatta', 'level': 6, 'backstory': '', 'strength': 10, 'dexterity': 11, 'constitution': 10, 'intelligence': 10, 'wisdom': 10, 'charisma': 10}
+2026-06-10 19:10:41 | INFO     | app.services.character_service | Character created: Elzear (ID=1)
+2026-06-10 19:10:41 | INFO     | werkzeug | 127.0.0.1 - - [10/Jun/2026 19:10:41] "[35m[1mPOST /characters/ HTTP/1.1[0m" 201 -
+2026-06-10 19:10:49 | INFO     | app.services.character_service | Retrieved 1 characters.
+2026-06-10 19:10:49 | INFO     | werkzeug | 127.0.0.1 - - [10/Jun/2026 19:10:49] "GET /characters/ HTTP/1.1" 200 -
+2026-06-10 19:10:55 | INFO     | app.routes.classes | Retrieved 12 classes.
+2026-06-10 19:10:55 | INFO     | werkzeug | 127.0.0.1 - - [10/Jun/2026 19:10:55] "GET /classes/ HTTP/1.1" 200 -
+2026-06-10 19:10:57 | INFO     | app.routes.races | Retrieved 10 races.
+2026-06-10 19:10:57 | INFO     | werkzeug | 127.0.0.1 - - [10/Jun/2026 19:10:57] "GET /races/ HTTP/1.1" 200 -
+2026-06-10 19:10:58 | INFO     | app.routes.classes | Retrieved 12 classes.
+2026-06-10 19:10:58 | INFO     | werkzeug | 127.0.0.1 - - [10/Jun/2026 19:10:58] "GET /classes/ HTTP/1.1" 200 -
+2026-06-10 19:11:00 | INFO     | app.routes.races | Retrieved 10 races.
+2026-06-10 19:11:00 | INFO     | werkzeug | 127.0.0.1 - - [10/Jun/2026 19:11:00] "GET /races/ HTTP/1.1" 200 -
+2026-06-10 19:11:35 | INFO     | app.services.character_service | Retrieved 1 characters.
+2026-06-10 19:11:35 | INFO     | werkzeug | 127.0.0.1 - - [10/Jun/2026 19:11:35] "GET /characters/ HTTP/1.1" 200 -
