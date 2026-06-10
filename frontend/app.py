@@ -45,12 +45,12 @@ def modifier_str(mod):
 
 
 st.set_page_config(
-    page_title="RPG Character Builder",
-    page_icon="⚔️",
+    page_title="One Piece Character Builder",
+    page_icon="🏴‍☠️",
     layout="wide",
 )
 
-st.sidebar.title("⚔️ RPG Builder")
+st.sidebar.title("🏴‍☠️ One Piece Builder")
 st.sidebar.markdown("---")
 page = st.sidebar.radio(
     "Navigate",
