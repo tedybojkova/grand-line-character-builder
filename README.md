@@ -15,7 +15,7 @@ Build and manage your pirate crew for the Grand Line. Create characters with cla
 ## Installation
 
 ```bash
-git clone https://github.com/tedybojkova/grand-line-builder.git
+git clone https://github.com/tedybojkova/grand-line-character-builder.git
 cd grand_line_builder
 pip install -r requirements.txt
 ```
