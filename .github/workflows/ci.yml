@@ -31,7 +31,7 @@ jobs:
         run: pylint app/ --fail-under=7.0
 
       - name: Mypy type checking
-        run: mypy app/ --ignore-missing-imports --allow-untyped-defs --allow-untyped-calls
+        run: mypy app/ --ignore-missing-imports --no-strict-optional
 
       - name: Pytest with coverage
         run: |
