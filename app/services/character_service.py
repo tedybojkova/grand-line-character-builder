@@ -21,6 +21,7 @@ MAX_STAT = 20
 MIN_LEVEL = 1
 MAX_LEVEL = 20
 MAX_NAME_LENGTH = 50
+MAX_BOUNTY = 5_000_000_000
 
 
 class CharacterService:
@@ -63,12 +64,16 @@ class CharacterService:
             self._validate_stat(stat, value)
             stats[stat] = value
 
+        bounty = int(data.get("bounty", 0))
+        self._validate_bounty(bounty)
+
         character = Character(
             name=name,
             level=level,
             class_id=character_class.id,
             race_id=race.id,
-            backstory=data.get("backstory", ""),
+            backstory=data.get("backstory", "A pirate sailing the Grand Line in search of the One Piece."),
+            bounty=bounty,
             **stats,
         )
         db.session.add(character)
@@ -90,6 +95,11 @@ class CharacterService:
 
         if "backstory" in data:
             character.backstory = data["backstory"]
+
+        if "bounty" in data:
+            bounty = int(data["bounty"])
+            self._validate_bounty(bounty)
+            character.bounty = bounty
 
         for stat in ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"]:
             if stat in data:
@@ -118,3 +128,7 @@ class CharacterService:
     def _validate_level(self, level: int) -> None:
         if not MIN_LEVEL <= level <= MAX_LEVEL:
             raise InvalidLevelError(level)
+
+    def _validate_bounty(self, bounty: int) -> None:
+        if bounty < 0 or bounty > MAX_BOUNTY:
+            raise ValueError(f"Bounty must be between 0 and {MAX_BOUNTY} Berry.")

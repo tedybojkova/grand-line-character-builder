@@ -1,45 +1,4 @@
 import pytest
-from app import create_app
-from app.models.database import db
-from app.models.character import Character
-from app.models.character_class import CharacterClass
-from app.models.race import Race
-
-
-@pytest.fixture
-def app():
-    flask_app = create_app(testing=True)
-    with flask_app.app_context():
-        yield flask_app
-
-
-@pytest.fixture
-def warrior_class(app):
-    return CharacterClass.query.filter_by(name="Swordsman").first()
-
-
-@pytest.fixture
-def human_race(app):
-    return Race.query.filter_by(name="Human").first()
-
-
-@pytest.fixture
-def sample_character(app, warrior_class, human_race):
-    character = Character(
-        name="Test Swordsman",
-        level=1,
-        class_id=warrior_class.id,
-        race_id=human_race.id,
-        strength=16,
-        dexterity=14,
-        constitution=12,
-        intelligence=10,
-        wisdom=8,
-        charisma=10,
-    )
-    db.session.add(character)
-    db.session.commit()
-    return character
 
 
 class TestStatModifiers:
@@ -64,7 +23,6 @@ class TestMaxHitPoints:
 
     def test_higher_level_increases_hp(self, sample_character):
         sample_character.level = 5
-        db.session.commit()
         assert sample_character.max_hit_points == 55
 
 
@@ -86,3 +44,25 @@ class TestProficiencyBonus:
     def test_proficiency_bonus(self, sample_character, level, expected):
         sample_character.level = level
         assert sample_character.proficiency_bonus == expected
+
+
+class TestBounty:
+
+    def test_default_bounty_is_zero(self, sample_character):
+        assert sample_character.bounty == 0
+
+    def test_bounty_can_be_set(self, sample_character):
+        sample_character.bounty = 120_000_000
+        assert sample_character.bounty == 120_000_000
+
+    def test_bounty_cannot_be_negative(self, sample_character):
+        from app.services.character_service import CharacterService
+        service = CharacterService()
+        with pytest.raises(ValueError):
+            service._validate_bounty(-1)
+
+    def test_bounty_cannot_exceed_max(self, sample_character):
+        from app.services.character_service import CharacterService
+        service = CharacterService()
+        with pytest.raises(ValueError):
+            service._validate_bounty(9_999_999_999)

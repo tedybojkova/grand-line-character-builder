@@ -9,7 +9,8 @@ class Character(db.Model):
     id: int = db.Column(db.Integer, primary_key=True)
     name: str = db.Column(db.String(50), nullable=False)
     level: int = db.Column(db.Integer, nullable=False, default=1)
-    backstory: str = db.Column(db.Text, nullable=False, default="")
+    backstory: str = db.Column(db.Text, nullable=False, default="A pirate sailing the Grand Line in search of the One Piece.")
+    bounty: int = db.Column(db.Integer, nullable=False, default=0)
 
     class_id: int = db.Column(db.Integer, nullable=False)
     race_id: int = db.Column(db.Integer, nullable=False)
@@ -24,13 +25,11 @@ class Character(db.Model):
     @property
     def character_class(self):
         from .character_class import CharacterClass
-
         return CharacterClass.query.get(self.class_id)
 
     @property
     def race(self):
         from .race import Race
-
         return Race.query.get(self.race_id)
 
     @property
@@ -82,6 +81,7 @@ class Character(db.Model):
             "name": self.name,
             "level": self.level,
             "backstory": self.backstory,
+            "bounty": self.bounty,
             "character_class": self.character_class.name,
             "race": self.race.name,
             "stats": {

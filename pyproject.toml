@@ -3,9 +3,9 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.backends.legacy:build"
 
 [project]
-name = "rpg-character-builder"
-version = "1.0.0"
-description = "A production-grade RPG character builder REST API"
+name = "grand-line-character-builder"
+version = 1.0
+description = "A production-grade One Piece pirate crew builder REST API"
 requires-python = ">=3.11"
 authors = [{ name = "Teodora Bozhkova", email = "bojkovatedy@gmail.com" }]
 readme = "README.md"

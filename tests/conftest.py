@@ -183,7 +183,7 @@ def human_race(app):
 @pytest.fixture
 def sample_character(app, warrior_class, human_race):
     character = Character(
-        name="Test Swordsman",
+        name="Roronoa Zoro",
         level=1,
         class_id=warrior_class.id,
         race_id=human_race.id,
@@ -193,6 +193,7 @@ def sample_character(app, warrior_class, human_race):
         intelligence=10,
         wisdom=8,
         charisma=10,
+        bounty=0,
     )
     _db.session.add(character)
     _db.session.commit()

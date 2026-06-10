@@ -17,7 +17,7 @@ def create_app(testing: bool = False) -> Flask:
 
     setup_logging()
     logger = log.getLogger(__name__)
-    logger.info("Starting RPG Character Builder...")
+    logger.info("Setting sail on the Grand Line...")
 
     db.init_app(app)
 
