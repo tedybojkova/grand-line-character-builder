@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# Virtual environment
+venv/
+env/
+
+# Database
+instance/rpg.db
+
+# Logs
+rpg_app.log
+
+# Coverage
+.coverage
+htmlcov/
+
+# Sphinx build
+docs/_build/
+
+# PyCharm
+.idea/
+
+# Environment variables
+.env
+
+# Distribution
+dist/
+build/
+*.egg-info/

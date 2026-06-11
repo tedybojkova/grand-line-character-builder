@@ -23,7 +23,7 @@ pip install -r requirements.txt
 ## Running the API
 
 ```bash
-python run.py
+py run.py
 ```
 
 API runs at `http://localhost:5000`
@@ -47,7 +47,6 @@ Open `http://localhost:8501` in your browser.
 | GET | `/characters/<id>` | Get a character by ID |
 | PUT | `/characters/<id>` | Update a character |
 | DELETE | `/characters/<id>` | Delete a character |
-| GET | `/characters/roll` | Roll random stats |
 | GET | `/classes/` | List all classes |
 | GET | `/races/` | List all races |
 
@@ -96,20 +95,20 @@ The app follows a layered architecture:
 
 ## Classes
 
-| Class | Hit Die | Primary Stat |
-|-------|---------|--------------|
-| Swordsman | d10 | Strength |
-| Navigator | d6 | Intelligence |
-| Sniper | d8 | Dexterity |
-| Cook | d8 | Dexterity |
-| Doctor | d8 | Wisdom |
-| Devil Fruit User | d6 | Charisma |
-| Shipwright | d10 | Constitution |
-| Musician | d6 | Charisma |
-| Archaeologist | d6 | Intelligence |
-| Pirate Captain | d8 | Charisma |
-| Marine | d10 | Strength |
-| Bounty Hunter | d10 | Dexterity |
+| Class | Primary Stat |
+|-------|--------------|
+| Swordsman| Strength |
+| Navigator | Intelligence |
+| Sniper | Dexterity |
+| Cook | Dexterity |
+| Doctor | Wisdom |
+| Devil Fruit User | Charisma |
+| Shipwright | Constitution |
+| Musician | Charisma |
+| Archaeologist | Intelligence |
+| Pirate Captain | Charisma |
+| Marine | Strength |
+| Bounty Hunter | Dexterity |
 
 ## Races
 
